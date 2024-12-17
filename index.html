@@ -30,6 +30,20 @@
             font-size: 3em;
             text-shadow: 2px 2px 4px #000000;
             margin: 0.5em 0;
+            animation-name: minimizeText;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minimizeText {
+            0%, 100% {
+                font-size: 0;
+            }
+
+            50% {
+                font-size: 60px;
+            }
         }
 
         .card p {
@@ -154,6 +168,24 @@
             left: 0;
             z-index: -1;
         }
+
+        img {
+            width: 400px;
+            animation-name: imageMove;
+            animation-duration: 1.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes imageMove {
+            0%, 100% {
+                transform: rotate(11deg);
+            }
+
+            50% {
+                transform: rotate(-11deg);
+            }
+        }
     </style>
 </head>
 
@@ -162,7 +194,8 @@
 
     <div class="card">
         <h1>Merry Christmas!</h1>
-        <p>Wishing you joy and peace this holiday season. Happy new Year!</p>
+        <p>Wishing you joy and peace this holiday season and a Happy new Year!</p>
+        <img src="santa.png" alt="">
     </div>
 
     <!-- Christmas Tree -->
@@ -178,6 +211,20 @@
     </div>
 
     <script>
+        const heading = document.querySelector('h1')
+        const santaImage = document.querySelector('img')
+
+        santaImage.addEventListener('mouseover', () => {
+            alert("Ho, Ho, Ho, merry Christmas!")
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley')
+        })
+
+        function changeHeading(){
+            heading.textContent = heading.textContent === "Merry Christmas!" ? "Hover Santa!" : "Merry Christmas!"
+        }
+
+        setInterval(changeHeading, 4000)
+
         // Snowfall effect using JavaScript
         const canvas = document.getElementById('snowCanvas');
         const ctx = canvas.getContext('2d');
